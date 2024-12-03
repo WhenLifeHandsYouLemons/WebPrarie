@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "WebPrarie",
+    "version": "1.0",
+    "description": "Changes PrarieLearn progress bars to match WebWork more closely.",
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "https://us.prairielearn.com/*",
+                "https://ca.prairielearn.com/*"
+            ]
+        }
+    ]
+}
