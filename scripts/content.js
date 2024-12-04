@@ -112,3 +112,14 @@ for (let i = 0; i < elementList.length; i++) {
         element.style.setProperty("font-weight", "normal", "important");
     }
 }
+
+// Changing assessment link style
+elementList = document.querySelectorAll("table tr td a");  // https://stackoverflow.com/a/42608539
+
+for (let i = 0; i < elementList.length; i++) {
+    let element = elementList[i];
+
+    if (!element.textContent.includes("New instance")) {
+        element.style.setProperty("font-weight", "bold", "important");
+    }
+}
