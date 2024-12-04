@@ -99,3 +99,16 @@ for (let i = 0; i < elementList.length; i++) {
 
     element.style.setProperty("background-color", DARKER, "important");
 }
+
+// Changing assessment badge style
+elementList = document.querySelectorAll(".badge");
+
+for (let i = 0; i < elementList.length; i++) {
+    let element = elementList[i];
+
+    if (!element.textContent.includes("complete") && !element.textContent.includes("incorrect")) {
+        element.style.setProperty("background-color", "transparent", "important");
+        element.style.setProperty("color", "black", "important");
+        element.style.setProperty("font-weight", "normal", "important");
+    }
+}
