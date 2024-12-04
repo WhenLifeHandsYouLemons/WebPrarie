@@ -1,62 +1,88 @@
-const elements = document.querySelectorAll(".text-center");
-const green = "#8f8";
-const yellow = "#ff0";
-const red = "#ff9494";
+// Constants
+const GREEN = "#8f8";
+const YELLOW = "#ff0";
+const RED = "#ff9494";
 
-let overdue = false;
-let percent;
+// Changing individual assessment page progress bar style (doing this first to revert any changes for the next section)
+let completeProgressBar = document.querySelector(".progress-bar");
+let incompleteProgressBar = document.querySelector(".flex-column");
+let completionPercent = parseInt(completeProgressBar.textContent);
 
-for (let i = 0; i < elements.length; i++) {
-    let element = elements[i];
+completeProgressBar.style.setProperty("color", "black", "important");
+completeProgressBar.style.setProperty("font-weight", "bold", "important");
+completeProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+completeProgressBar.style.setProperty("background-color", GREEN, "important");
+
+incompleteProgressBar.style.setProperty("color", "black", "important");
+incompleteProgressBar.style.setProperty("font-weight", "bold", "important");
+incompleteProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+incompleteProgressBar.style.setProperty("background-color", RED, "important");
+
+if (completionPercent >= 100) {
+    completeProgressBar.style.setProperty("background-color", GREEN, "important");
+
+    if (completionPercent == 100) {
+        completeProgressBar.textContent = "★Perfect★";
+    } else {
+        completeProgressBar.textContent = "★★Perfect★★";
+    }
+}
+
+// Changing progress bar and assessment row text styles
+let elementList = document.querySelectorAll(".text-center");
+let assessmentOverdue = false;
+
+for (let i = 0; i < elementList.length; i++) {
+    let element = elementList[i];
 
     if (element.classList.contains("align-middle")) {
+        completeProgressBar = element.querySelector(".progress-bar");
+        incompleteProgressBar = element.querySelector(".flex-column");
 
-        if (element.querySelector(".progress-bar") != null) {
-            percent = parseInt(element.querySelector(".progress-bar").textContent);
+        if (completeProgressBar != null) {
+            completionPercent = parseInt(completeProgressBar.textContent);
 
-            element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
-            element.querySelector(".flex-column").style.setProperty("color", "black", "important");
-            element.querySelector(".progress-bar").style.setProperty("font-weight", "bold", "important");
-            element.querySelector(".flex-column").style.setProperty("font-weight", "bold", "important");
-            element.querySelector(".progress-bar").style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
-            element.querySelector(".flex-column").style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+            completeProgressBar.style.setProperty("color", "black", "important");
+            completeProgressBar.style.setProperty("font-weight", "bold", "important");
+            completeProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");   // https://stackoverflow.com/a/3952909
 
-            if (overdue) {
-                if (percent >= 100) {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
+            incompleteProgressBar.style.setProperty("color", "black", "important");
+            incompleteProgressBar.style.setProperty("font-weight", "bold", "important");
+            incompleteProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
 
-                    if (percent == 100) {
-                        element.querySelector(".progress-bar").textContent = "★Perfect★";
+            if (assessmentOverdue) {
+                if (completionPercent >= 100) {
+                    completeProgressBar.style.setProperty("background-color", GREEN, "important");
+
+                    if (completionPercent == 100) {
+                        completeProgressBar.textContent = "★Perfect★";
                     } else {
-                        element.querySelector(".progress-bar").textContent = "★★Perfect★★";
+                        completeProgressBar.textContent = "★★Perfect★★";
                     }
                 } else {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
-                    element.querySelector(".flex-column").style.setProperty("background-color", red, "important");
+                    completeProgressBar.style.setProperty("background-color", GREEN, "important");
+                    incompleteProgressBar.style.setProperty("background-color", RED, "important");
                 }
             } else {
-                if (percent >= 100) {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
+                if (completionPercent >= 100) {
+                    completeProgressBar.style.setProperty("background-color", GREEN, "important");
 
-                    if (percent == 100) {
-                        element.querySelector(".progress-bar").textContent = "★Perfect★";
+                    if (completionPercent == 100) {
+                        completeProgressBar.textContent = "★Perfect★";
                     } else {
-                        element.querySelector(".progress-bar").textContent = "★★Perfect★★";
+                        completeProgressBar.textContent = "★★Perfect★★";
                     }
                 } else {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
-                    element.querySelector(".flex-column").style.setProperty("background-color", yellow, "important");
+                    completeProgressBar.style.setProperty("background-color", GREEN, "important");
+                    incompleteProgressBar.style.setProperty("background-color", YELLOW, "important");
                 }
             }
 
-            overdue = false;
+            assessmentOverdue = false;
         } else {
-            if (element.textContent.includes("None")) {
-                element.textContent = "0%";
-                overdue = true;
-            } else if (element.textContent.includes("Assessment closed.")) {
-                element.textContent = "Closed";
-                overdue = true;
+            if (element.textContent.includes("None") || element.textContent.includes("Assessment closed.")) {
+                element.textContent = "";
+                assessmentOverdue = true;
             } else if (element.textContent.includes("Not started")) {
                 element.textContent = "";
             }
