@@ -14,6 +14,13 @@ for (let i = 0; i < elements.length; i++) {
         if (element.querySelector(".progress-bar") != null) {
             percent = parseInt(element.querySelector(".progress-bar").textContent);
 
+            element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
+            element.querySelector(".flex-column").style.setProperty("color", "black", "important");
+            element.querySelector(".progress-bar").style.setProperty("font-weight", "bold", "important");
+            element.querySelector(".flex-column").style.setProperty("font-weight", "bold", "important");
+            element.querySelector(".progress-bar").style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+            element.querySelector(".flex-column").style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+
             if (overdue) {
                 if (percent >= 100) {
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
@@ -26,8 +33,6 @@ for (let i = 0; i < elements.length; i++) {
                 } else {
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
                     element.querySelector(".flex-column").style.setProperty("background-color", red, "important");
-
-                    element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
                 }
             } else {
                 if (percent >= 100) {
@@ -39,8 +44,6 @@ for (let i = 0; i < elements.length; i++) {
                         element.querySelector(".progress-bar").textContent = "★★Perfect★★";
                     }
                 } else {
-
-                    element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
                     element.querySelector(".flex-column").style.setProperty("background-color", yellow, "important");
                 }
