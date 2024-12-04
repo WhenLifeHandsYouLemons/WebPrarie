@@ -4,6 +4,7 @@ const yellow = "#ff0";
 const red = "#ff9494";
 
 let overdue = false;
+let percent;
 
 for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
@@ -11,11 +12,17 @@ for (let i = 0; i < elements.length; i++) {
     if (element.classList.contains("align-middle")) {
 
         if (element.querySelector(".progress-bar") != null) {
+            percent = parseInt(element.querySelector(".progress-bar").textContent);
+
             if (overdue) {
-                if (element.querySelector(".progress-bar").textContent.includes("100%")) {
+                if (percent >= 100) {
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
 
-                    element.querySelector(".progress-bar").textContent = "Perfect!";
+                    if (percent == 100) {
+                        element.querySelector(".progress-bar").textContent = "★Perfect★";
+                    } else {
+                        element.querySelector(".progress-bar").textContent = "★★Perfect★★";
+                    }
                 } else {
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
                     element.querySelector(".flex-column").style.setProperty("background-color", red, "important");
@@ -23,10 +30,14 @@ for (let i = 0; i < elements.length; i++) {
                     element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
                 }
             } else {
-                if (element.querySelector(".progress-bar").textContent.includes("100%")) {
+                if (percent >= 100) {
                     element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
 
-                    element.querySelector(".progress-bar").textContent = "Perfect!";
+                    if (percent == 100) {
+                        element.querySelector(".progress-bar").textContent = "★Perfect★";
+                    } else {
+                        element.querySelector(".progress-bar").textContent = "★★Perfect★★";
+                    }
                 } else {
 
                     element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
@@ -43,3 +54,4 @@ for (let i = 0; i < elements.length; i++) {
         }
     }
 }
+
