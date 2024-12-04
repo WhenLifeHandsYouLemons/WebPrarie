@@ -51,8 +51,14 @@ for (let i = 0; i < elements.length; i++) {
 
             overdue = false;
         } else {
-            if (element.textContent.includes("None") || element.textContent.includes("Assessment Closed.")) {
+            if (element.textContent.includes("None")) {
+                element.textContent = "0%";
                 overdue = true;
+            } else if (element.textContent.includes("Assessment closed.")) {
+                element.textContent = "Closed";
+                overdue = true;
+            } else if (element.textContent.includes("Not started")) {
+                element.textContent = "";
             }
         }
     }
