@@ -2,7 +2,9 @@
 const GREEN = "#8f8";
 const YELLOW = "#ff0";
 const RED = "#ff9494";
+const DARK = "#ddd";
 const DARKER = "#aaa";
+const LIGHT = "#fff";
 
 // Changing individual assessment page progress bar style (doing this first to revert any changes for the next section)
 let completeProgressBar = document.querySelector(".progress-bar");
@@ -121,5 +123,23 @@ for (let i = 0; i < elementList.length; i++) {
 
     if (!element.textContent.includes("New instance")) {
         element.style.setProperty("font-weight", "bold", "important");
+    }
+}
+
+// Changing assessment row style
+let light = true;
+elementList = document.querySelectorAll("tr");
+
+for (let i = 0; i < elementList.length; i++) {
+    let element = elementList[i];
+
+    if (element.childElementCount > 1) {    // https://www.w3schools.com/jsref/prop_element_childelementcount.asp
+        if (light) {
+            element.style.setProperty("background-color", LIGHT, "important");
+            light = false;
+        } else {
+            element.style.setProperty("background-color", DARK, "important");
+            light = true;
+        }
     }
 }
