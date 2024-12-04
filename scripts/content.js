@@ -2,6 +2,7 @@
 const GREEN = "#8f8";
 const YELLOW = "#ff0";
 const RED = "#ff9494";
+const DARKER = "#aaa";
 
 // Changing individual assessment page progress bar style (doing this first to revert any changes for the next section)
 let completeProgressBar = document.querySelector(".progress-bar");
@@ -90,3 +91,11 @@ for (let i = 0; i < elementList.length; i++) {
     }
 }
 
+// Changing assessment group heading style
+elementList = document.querySelectorAll("[data-testid=assessment-group-heading]"); // https://stackoverflow.com/a/48064608
+
+for (let i = 0; i < elementList.length; i++) {
+    let element = elementList[i];
+
+    element.style.setProperty("background-color", DARKER, "important");
+}
