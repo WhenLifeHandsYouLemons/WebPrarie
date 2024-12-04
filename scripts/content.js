@@ -1,7 +1,7 @@
 const elements = document.querySelectorAll(".text-center");
-const green = "#28a745";
-const yellow = "#ffc107";
-const red = "#dc3545";
+const green = "#8f8";
+const yellow = "#ff0";
+const red = "#ff9494";
 
 let overdue = false;
 
@@ -17,7 +17,7 @@ for (let i = 0; i < elements.length; i++) {
 
                     element.querySelector(".progress-bar").textContent = "Perfect!";
                 } else {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", yellow, "important");
+                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
                     element.querySelector(".flex-column").style.setProperty("background-color", red, "important");
 
                     element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
@@ -28,9 +28,10 @@ for (let i = 0; i < elements.length; i++) {
 
                     element.querySelector(".progress-bar").textContent = "Perfect!";
                 } else {
-                    element.querySelector(".progress-bar").style.setProperty("background-color", yellow, "important");
 
                     element.querySelector(".progress-bar").style.setProperty("color", "black", "important");
+                    element.querySelector(".progress-bar").style.setProperty("background-color", green, "important");
+                    element.querySelector(".flex-column").style.setProperty("background-color", yellow, "important");
                 }
             }
 
