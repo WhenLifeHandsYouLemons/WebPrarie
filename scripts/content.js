@@ -9,17 +9,24 @@ const LIGHT = "#fff";
 // Changing individual assessment page progress bar style (doing this first to revert any changes for the next section)
 let completeProgressBar = document.querySelector(".progress-bar");
 let incompleteProgressBar = document.querySelector(".flex-column");
-let completionPercent = parseInt(completeProgressBar.textContent);
+let completionPercent = 0;
 
-completeProgressBar.style.setProperty("color", "black", "important");
-completeProgressBar.style.setProperty("font-weight", "bold", "important");
-completeProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
-completeProgressBar.style.setProperty("background-color", GREEN, "important");
+if (completeProgressBar != null) {
+    let completionPercent = parseInt(completeProgressBar.textContent);
 
-incompleteProgressBar.style.setProperty("color", "black", "important");
-incompleteProgressBar.style.setProperty("font-weight", "bold", "important");
-incompleteProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
-incompleteProgressBar.style.setProperty("background-color", RED, "important");
+    completeProgressBar.style.setProperty("color", "black", "important");
+    completeProgressBar.style.setProperty("font-weight", "bold", "important");
+    completeProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+    completeProgressBar.style.setProperty("background-color", GREEN, "important");
+}
+
+if (incompleteProgressBar != null) {
+    console.log("Incomplete found!")
+    incompleteProgressBar.style.setProperty("color", "black", "important");
+    incompleteProgressBar.style.setProperty("font-weight", "bold", "important");
+    incompleteProgressBar.style.setProperty("box-shadow", "inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25)", "important");
+    incompleteProgressBar.style.setProperty("background-color", RED, "important");
+}
 
 if (completionPercent >= 100) {
     completeProgressBar.style.setProperty("background-color", GREEN, "important");

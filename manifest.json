@@ -1,17 +1,22 @@
 {
     "manifest_version": 3,
     "name": "WebPrarie",
-    "version": "1.0",
-    "description": "A browser extension designed to change PrarieLearn's progress bars to match WebWork more closely and also improve the UI to be more readable.",
+    "version": "1.0.0",
+    "description": "An extension designed to change PrarieLearn's progress bars to match WebWork more closely, and improve the UI to be more readable.",
     "content_scripts": [
         {
             "js": [
                 "scripts/content.js"
             ],
             "matches": [
-                "https://us.prairielearn.com/*",
-                "https://ca.prairielearn.com/*"
+                "https://us.prairielearn.com/pl/course_instance*",
+                "https://ca.prairielearn.com/pl/course_instance/*"
             ]
         }
-    ]
+    ],
+    "icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    }
 }
