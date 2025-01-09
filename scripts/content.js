@@ -95,6 +95,8 @@ for (let i = 0; i < elementList.length; i++) {
                 assessmentOverdue = true;
             } else if (element.textContent.includes("Not started")) {
                 element.textContent = "";
+            } else {
+                // element.style.setProperty("font-weight", "bold", "important");
             }
         }
     }
