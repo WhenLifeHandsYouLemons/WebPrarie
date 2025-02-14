@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "WebPrarie",
     "version": "1.0.1",
     "description": "An extension designed to change PrarieLearn's progress bars to match WeBWorK more closely, and improve the UI to be more readable.",
