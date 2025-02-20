@@ -9,7 +9,7 @@
                 "scripts/content.js"
             ],
             "matches": [
-                "https://us.prairielearn.com/pl/course_instance*",
+                "https://us.prairielearn.com/pl/course_instance/*",
                 "https://ca.prairielearn.com/pl/course_instance/*"
             ]
         }
